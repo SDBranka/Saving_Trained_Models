@@ -1,0 +1,6 @@
+mod1
+https://medium.com/analytics-vidhya/want-to-save-and-reuse-a-model-later-d48398584695
+
+mod2
+https://machinelearningmastery.com/save-load-machine-learning-models-python-scikit-learn/
+   
