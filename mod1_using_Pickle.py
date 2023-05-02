@@ -5,6 +5,7 @@ import pandas as pd                                  # data analytics
 import matplotlib.pyplot as plt                      # data visualization
 import tensorflow as tf                              # needed to create a linear regression model algo
 import tensorflow.compat.v2.feature_column as fc     # 
+from tensorflow.keras.utils import to_categorical
 # from IPython.display import clear_output             # to enable clearing the output
 
 
@@ -96,6 +97,21 @@ for feature_name in CATEGORICAL_COLUMNS:
     # gets a list of all unique values from given feature column
     vocabulary = train_data[feature_name].unique()  
     feature_columns.append(tf.feature_column.categorical_column_with_vocabulary_list(feature_name, vocabulary))
+    
+    # Inputs are typically transformed by preprocessing layers before concatenation.
+    outputs = tf.keras.layers.Concatenate()(CATEGORICAL_COLUMNS.values())
+    model = tf.keras.Model(inputs=CATEGORICAL_COLUMNS, outputs=outputs)
+    model(input_dict)
+    # print(input_dict)
+    # # {'foo': <tf.Tensor: shape=(1,), dtype=int32, numpy=array([1])>, 
+    # # 'bar': <tf.Tensor: shape=(1,), dtype=int32, numpy=array([0])>, 
+    # # 'baz': <tf.Tensor: shape=(1,), dtype=int32, numpy=array([-1])>
+    # # }
+
+    one_hot_layer = tf.keras.layers.CategoryEncoding(
+    num_tokens=3, output_mode='one_hot')
+
+
 
 # for feature_name in NUMERIC_COLUMNS:
 #     feature_columns.append(tf.feature_column.numeric_column(feature_name, dtype=tf.float32))

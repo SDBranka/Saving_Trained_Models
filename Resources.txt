@@ -4,3 +4,5 @@ https://medium.com/analytics-vidhya/want-to-save-and-reuse-a-model-later-d483985
 mod2
 https://machinelearningmastery.com/save-load-machine-learning-models-python-scikit-learn/
    
+Migrate tf.feature_columns to Keras preprocessing layers
+https://www.tensorflow.org/guide/migrate/migrating_feature_columns
