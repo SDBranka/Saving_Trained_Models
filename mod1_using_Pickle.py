@@ -97,7 +97,8 @@ for feature_name in CATEGORICAL_COLUMNS:
     # gets a list of all unique values from given feature column
     vocabulary = train_data[feature_name].unique()  
     feature_columns.append(tf.feature_column.categorical_column_with_vocabulary_list(feature_name, vocabulary))
-    
+
+""""    
     # Inputs are typically transformed by preprocessing layers before concatenation.
     outputs = tf.keras.layers.Concatenate()(CATEGORICAL_COLUMNS.values())
     model = tf.keras.Model(inputs=CATEGORICAL_COLUMNS, outputs=outputs)
@@ -110,7 +111,7 @@ for feature_name in CATEGORICAL_COLUMNS:
 
     one_hot_layer = tf.keras.layers.CategoryEncoding(
     num_tokens=3, output_mode='one_hot')
-
+"""
 
 
 # for feature_name in NUMERIC_COLUMNS:
